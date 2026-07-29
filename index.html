@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coiffure Coston - Salon Pro Demo</title>
+<meta name="description" content="Site démo Coiffure Coston. Coupe, Rasé, Coloration. Style futuriste et pro." />
+<meta name="theme-color" content="#1A1F3A">
+<link rel="preconnect" href="https://i.ibb.co" crossorigin>
+<style> 
+:root { 
+  --noir: #0A0A0A; 
+  --bleu-nuit: #1A1F3A; 
+  --blanc: #FFFFFF; 
+  --bleu-elec: #00A3FF; 
+  --vert: #00FF88; 
+  --futur: #00D9FF; 
+  --focus: #FFD700;
+} 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--noir); color: var(--blanc); font-family: system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; font-size: 16px; } 
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+nav { background: var(--bleu-nuit); padding: 12px 10px; position: sticky; top: 0; border-bottom: 2px solid var(--futur); z-index: 999; text-align: center; } 
+nav a { color: var(--futur); text-decoration: none; margin: 4px; font-weight: 700; font-size: 16px; display: inline-block; padding: 12px 16px; border-radius: 8px; min-height: 44px; }
+nav a:hover, nav a[aria-current="page"] { color: var(--vert); background: rgba(0,217,255,0.1); }
+
+.container { padding: 40px 20px; max-width: 1100px; margin: auto; text-align: center; } 
+h1, h2, h3 { color: var(--blanc); border: 3px solid var(--bleu-elec); padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,163,255,0.3); background: linear-gradient(135deg, var(--bleu-nuit), var(--noir)); margin: 20px 0; } 
+h1 { font-size: clamp(28px, 5vw, 48px); }
+h2 { font-size: clamp(24px, 4vw, 36px); }
+.carte { background: var(--bleu-nuit); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid var(--futur); } 
+.btn { display: inline-block; background: var(--vert); color: var(--noir); padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; border: none; cursor: pointer; margin: 8px; min-height: 48px; transition: transform 0.15s; } 
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(2px); } 
+#compteur { font-size: clamp(22px, 4vw, 28px); color: var(--futur); margin: 20px 0; font-weight: 700; } 
+.liste-prix { text-align: left; margin: 15px auto; max-width: 400px; list-style: none; } 
+.liste-prix li { padding: 10px 0; border-bottom: 1px solid var(--futur); } 
+label { display: block; margin-top: 15px; font-weight: 700; color: var(--futur); }
+input { width: 100%; max-width: 400px; padding: 14px; margin: 10px 0; border-radius: 10px; border: 2px solid var(--futur); background: var(--noir); color: var(--blanc); font-size: 16px; } 
+.galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; justify-content: center; }
+.galerie img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; border: 2px solid var(--futur); transition: transform 0.3s; } 
+.galerie img:hover { transform: scale(1.03); box-shadow: 0 0 20px var(--bleu-elec); } 
+.page { display: none; }
+.page.active { display: block; }
+footer { background: var(--bleu-nuit); padding: 20px; text-align: center; border-top: 2px solid var(--futur); margin-top: 40px; }
+img { max-width: 100%; height: auto; }
+@media (max-width: 768px) { .container { padding: 20px 15px; } nav { display: flex; flex-wrap: wrap; justify-content: center; } }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="sr-only">Aller au contenu principal</a>
+
+<nav role="navigation" aria-label="Menu principal">
+  <a href="#" onclick="showPage('accueil')" aria-current="page">Accueil</a>
+  <a href="#" onclick="showPage('a-propos')">À Propos</a>
+  <a href="#" onclick="showPage('services')">Services</a>
+  <a href="#" onclick="showPage('portfolio')">Portfolio</a>
+  <a href="#" onclick="showPage('blog')">Blog</a>
+  <a href="#" onclick="showPage('contact')">Contact</a>
+  <a href="#" onclick="showPage('faq')">FAQ</a>
+</nav>
+
+<main id="main-content">
+<!-- 1. ACCUEIL -->
+<section class="container page active" id="accueil" aria-labelledby="titre-accueil">
+  <h1 id="titre-accueil">Coiffure Coston</h1>
+  <p>Le style qui vous démarque - Version Démo</p>
+  <img src="https://i.ibb.co/CgPXqjQ/IMG-20260709-185641-862.jpg" alt="Salon de coiffure moderne avec éclairage bleu futuriste" loading="lazy" decoding="async" width="800" height="500" />
+  <div class="carte">
+    <h2>Bienvenue</h2>
+    <p>Excellence et style. Site démo pour présentation.</p>
+    <a href="#" onclick="showPage('services')" class="btn" role="button">Voir nos Services</a>
+  </div>
+</section>
+
+<!-- 2. À PROPOS -->
+<section class="container page" id="a-propos" aria-labelledby="titre-propos">
+  <h2 id="titre-propos">À Propos</h2>
+  <img src="https://i.ibb.co/cXDkY9BK/IMG-20260709-185023-592.jpg" alt="Équipe professionnelle de coiffure" loading="lazy" decoding="async" width="800" height="500" />
+  <div class="carte">
+    <p>Site démo. On crée votre style avec des coupes professionnelles.</p>
+  </div>
+</section>
+
+<!-- 3. SERVICES -->
+<section class="container page" id="services" aria-labelledby="titre-services">
+  <h2 id="titre-services">Nos Services</h2>
+  <img src="https://i.ibb.co/bRJggYWj/IMG-20260709-184939-222.jpg" alt="Exemples de coupes et colorations" loading="lazy" decoding="async" width="800" height="500" />
+  <div class="carte">
+    <h3>Calculateur de prix Démo</h3>
+    <button class="btn" type="button" onclick="ajouterPrix('Coupe', 150)">+ Coupe 150€</button>
+    <button class="btn" type="button" onclick="ajouterPrix('Rasé', 250)">+ Rasé 250€</button>
+    <button class="btn" type="button" onclick="ajouterPrix('Coloration', 300)">+ Coloration 300€</button>
+    <button class="btn" type="button" onclick="resetPrix()">Reset</button>
+    <div id="compteur" aria-live="polite">Total: 0€</div>
+    <ul id="liste" class="liste-prix"></ul>
+  </div>
+</section>
+
+<!-- 4. PORTFOLIO -->
+<section class="container page" id="portfolio" aria-labelledby="titre-portfolio">
+  <h2 id="titre-portfolio">Portfolio</h2>
+  <div class="carte">
+    <div class="galerie">
+      <img src="https://i.ibb.co/GvZrVCyd/IMG-20260709-184931-236.jpg" alt="Coupe dégradée homme" loading="lazy" decoding="async" width="400" height="400" />
+      <img src="https://i.ibb.co/m5jQ5Vw7/IMG-20260629-212732-218.jpg" alt="Coupe femme tendance" loading="lazy" decoding="async" width="400" height="400" />
+      <img src="https://i.ibb.co/vvJ3Xvwc/IMG-20260503-134901-577.jpg" alt="Coloration professionnelle" loading="lazy" decoding="async" width="400" height="400" />
+      <img src="https://i.ibb.co/jS2FRZj/IMG-20260311-232305-846.jpg" alt="Style fade moderne" loading="lazy" decoding="async" width="400" height="400" />
+    </div>
+  </div>
+</section>
+
+<!-- 5. BLOG -->
+<section class="container page" id="blog" aria-labelledby="titre-blog">
+  <h2 id="titre-blog">Blog & Conseils</h2>
+  <article class="carte">
+    <h3>Comment entretenir votre coupe ?</h3>
+    <p>Lavez 2 fois/sem, hydratez, et revenez toutes les 3 semaines.</p>
+  </article>
+  <article class="carte">
+    <h3>Les tendances 2026</h3>
+    <p>Fade, Mullet moderne, et coupes texturées.</p>
+  </article>
+</section>
+
+<!-- 6. CONTACT DÉMO -->
+<section class="container page" id="contact" aria-labelledby="titre-contact">
+  <h2 id="titre-contact">Contact Démo</h2>
+  <div class="carte">
+    <h3>Réservation WhatsApp Démo</h3>
+    <p>Numéro démo: +229XXXXXXXXXX</p>
+    <form onsubmit="event.preventDefault(); updateWhatsAppLink();">
+      <label for="nomClient">Votre Nom</label>
+      <input type="text" id="nomClient" name="nomClient" placeholder="Votre Nom" required />
+      <label for="dateRdv">Date RDV</label>
+      <input type="date" id="dateRdv" name="dateRdv" required />
+      <label for="heureRdv">Heure RDV</label>
+      <input type="time" id="heureRdv" name="heureRdv" required />
+      <a id="whatsappBtn" href="https://wa.me/229XXXXXXXXXX?text=Bonjour" target="_blank" rel="noopener noreferrer" class="btn">Envoyer ma demande</a>
+    </form>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="container page" id="faq" aria-labelledby="titre-faq">
+  <h2 id="titre-faq">FAQ</h2>
+  <div class="carte">
+    <h3>Acceptez-vous les sans RDV ?</h3>
+    <p>Oui, mais avec RDV vous avez la priorité.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>© 2026 Coiffure Coston - Version Démo - Tous droits réservés</p>
+</footer>
+
+<script> 
+let total = 0; 
+let panier = []; 
+
+function showPage(id) { 
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.setAttribute('aria-hidden', 'true');
+  }); 
+  document.querySelectorAll('nav a').forEach(a => a.removeAttribute('aria-current'));
+  const activePage = document.getElementById(id);
+  activePage.classList.add('active');
+  activePage.setAttribute('aria-hidden', 'false');
+  document.querySelector(`nav a[onclick*="${id}"]`).setAttribute('aria-current', 'page');
+  window.scrollTo({top: 0, behavior: 'smooth'}); 
+}
+
+function ajouterPrix(nom, prix) { 
+  total += prix; 
+  panier.push(`${nom} - ${prix}€`); 
+  document.getElementById("compteur").innerText = `Total: ${total}€`; 
+  document.getElementById("liste").innerHTML = panier.map(item => `<li>${item}</li>`).join(''); 
+  updateWhatsAppLink(); 
+} 
+
+function resetPrix() { 
+  total = 0; 
+  panier = []; 
+  document.getElementById("compteur").innerText = "Total: 0€"; 
+  document.getElementById("liste").innerHTML = ""; 
+  updateWhatsAppLink(); 
+} 
+
+function updateWhatsAppLink() { 
+  let nom = document.getElementById("nomClient").value; 
+  let date = document.getElementById("dateRdv").value; 
+  let heure = document.getElementById("heureRdv").value; 
+  let message = `Bonjour Coiffure Coston Demo\nNom: ${nom}\nDate RDV: ${date} à ${heure}\n\nCommande:\n${panier.join('\n')}\n\nTotal: ${total}€`; 
+  document.getElementById("whatsappBtn").href = `https://wa.me/229XXXXXXXXXX?text=${encodeURIComponent(message)}`; 
+} 
+
+["nomClient","dateRdv","heureRdv"].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateWhatsAppLink); 
+});
+</script>
+</body>
+  </html>
